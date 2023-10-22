@@ -1,8 +1,8 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { City, Forecast, PForecast, SForecast, Weather } from '../interfaces/Models.interface';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PATHS } from '../constants/api-paths.const';
+import { City, Forecast, ForecastData, PForecast, SForecast, Weather } from '../interfaces/Models.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +18,8 @@ export class ApiManagementServiceService {
   }
 
   getCurrentConditions(key: string) : Observable<Weather[]> {
-  return this.http.get<Weather[]>(`${PATHS.API_BASE_PATH}${PATHS.CURRENT_WEATHER.replace(':locationKey', key)}`);
+    return this.http.get<Weather[]>(`${PATHS.API_BASE_PATH}${PATHS.CURRENT_WEATHER.replace(':locationKey', key)}`);
   }
-
 
   getOneHourForecast(key: string) : Observable<SForecast[]> {
     const params = (new HttpParams).append("metric", true);
@@ -49,4 +48,5 @@ export class ApiManagementServiceService {
   getYesterdayForecast(key: string) : Observable<PForecast[]> {
     return this.http.get<PForecast[]>(`${PATHS.API_BASE_PATH}${PATHS.YESTERDAYS_WEATHER.replace(':locationKey', key)}`);
   }
+
 }
