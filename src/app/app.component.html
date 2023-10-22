@@ -1,23 +1,2 @@
-<input matInput type="text" class="city" [(ngModel)]="city"><br>
-<button mat-stroked-button class="submit" type="submit" (click)="getCitiesNames()">Szukaj</button><br>
-<div class="list">
-  <mat-form-field>
-  <mat-select [(ngModel)]="selectedOption" placeholder="Wybierz z listy" class="list" *ngIf="options.length > 0">
-    <mat-option
-      *ngFor="let option of options"
-      [value]="option"
-    >
-      {{ option }}
-    </mat-option>
-  </mat-select>
-  </mat-form-field>
-</div>
-<button mat-raised-button type="submit" (click)="getCurrentLocation()">Pogoda dla zaznaczonego miasta</button><br>
-<button mat-raised-button type="submit" (click)="getOneHourForecast()">Pogoda za 1 godzinę dla zaznaczonego miasta</button><br>
-<button mat-raised-button type="submit" (click)="getTwelveHourForecast()">Pogoda za 12 godzin dla zaznaczonego miasta</button><br>
-<button mat-raised-button type="submit" (click)="getOneDailyForecast()">Pogoda za 1 dzień dla zaznaczonego miasta</button><br>
-<button mat-raised-button type="submit" (click)="getFiveDaysForecast()">Pogoda za 5 dni dla zaznaczonego miasta</button><br>
-<button mat-raised-button type="submit" (click)="getYesterdayForecast()">Pogoda wczoraj dla zaznaczonego miasta</button><br>
-<div class="display" *ngIf="cityIsPicked">
-  Temperatura: {{ temp }} °C
-</div>
+<app-city-search></app-city-search>
+<app-display-weather></app-display-weather>
